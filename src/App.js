@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import RenderAll from './components/RenderAll.js'
+import Form from './components/Form.js'
+import Search from './components/Search.js'
+
 
 const App = () => {
   const [ persons, setPersons ] = useState([
@@ -24,8 +28,6 @@ const App = () => {
       console.log(event.target.value)
       setShowFilter(event.target.value)
   }
-
-
   const addPerson = (event) => {
     event.preventDefault()
     console.log('person added', event.target)
@@ -45,32 +47,19 @@ const App = () => {
   }
 
 
-  const personsToShow = showFilter
-    ? persons.filter(person => person.name.toLowerCase().indexOf(showFilter.toLowerCase()) !== -1)
-    : persons
-
-
   return (
     <div>
       <h2>Phonebook</h2>
-      <form>
-        <div> 
-          input shown with: <input value={showFilter} onChange={handleSearchChange}></input>
-        </div>
-      </form>
+      <Search showFilter={showFilter} handleSearchChange={handleSearchChange}/>
+      
       <h2>Add New</h2>
-      <form onSubmit={addPerson}>
-        <div>
-          <div>name: <input value={newName} onChange={handleNameChange}/></div>
-          <div>number: <input value={newNumber} onChange={handleNumberChange} /></div>
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <Form addPerson={addPerson} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange}/>
+      
       <h2>Numbers</h2>
-      {personsToShow.map(person => <div key={person.name}>{person.name}: {person.number}</div>)}
+      <RenderAll persons={persons} showFilter={showFilter}/>
+
     </div>
   )
 }
+
 export default App
