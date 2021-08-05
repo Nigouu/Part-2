@@ -17,14 +17,12 @@ const Course = ({ course }) => {
   return (
     <div>
       <h1>{course.name}</h1>
-      
         {course.parts.map(parts => 
           <li key={parts.id}>
             {parts.name} {parts.exercises}
           </li>
         )}
         <Total course={course}/>
-      
     </div>
   )
 }
