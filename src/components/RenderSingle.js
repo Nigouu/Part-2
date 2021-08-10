@@ -7,17 +7,17 @@ const RenderSingle = ({ person}) => {
 
   const [show, setShow] = useState(true)
   const [ we, setWe ] = useState({}) 
-    const api_key = process.env.REACT_APP_API_KEY.toString()
+  const api_key = process.env.REACT_APP_API_KEY.toString()
 
-    const hook = () => {
-    axios
-      .get("http://api.weatherstack.com/current?access_key=" + api_key + "&query=" + person.capital)
-      .then(response => {
-        setWe(response.data)
-      })
-    }
+  const hook = () => {
+  axios
+    .get("http://api.weatherstack.com/current?access_key=" + api_key + "&query=" + person.capital)
+    .then(response => {
+      setWe(response.data)
+    })
+  }
 
-    useEffect(hook, [])
+  useEffect(hook, [])
 
   if (show === true){
     return (
