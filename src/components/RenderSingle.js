@@ -1,8 +1,14 @@
 import React from 'react'
 
-const RenderSingle = ({ person }) => {
+const RenderSingle = ({person, deletePerson }) => {
+
   return (
-    <div>{person.name} {person.number}</div>
+    <div key={person.id}>
+      {person.name} : {person.number} 
+      <button value={person.id} name={person.name} onClick={deletePerson}>delete</button>
+    </div>
+    
+    
   )
 }
 
