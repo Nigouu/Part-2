@@ -3,7 +3,7 @@ import React from 'react'
 const RenderSingle = ({person, deletePerson }) => {
 
   return (
-    <div key={person.id}>
+    <div className='person' key={person.id}>
       {person.name} : {person.number} 
       <button value={person.id} name={person.name} onClick={deletePerson}>delete</button>
     </div>
